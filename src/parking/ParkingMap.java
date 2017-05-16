@@ -6,6 +6,7 @@
 package parking;
 
 import java.awt.event.MouseListener;
+import javax.swing.UIManager;
 
 /**
  *
@@ -92,7 +93,13 @@ public class ParkingMap extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
-   
+    public static void setLookAndFeel() {
+    try {
+      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    } catch(Exception e) {
+      System.out.println("Error setting native LAF: " + e);
+    }
+    }
 
     /**
      * @param args the command line arguments
@@ -123,7 +130,9 @@ public class ParkingMap extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
+                setLookAndFeel();
                 new ParkingMap().setVisible(true);
             }
         });
